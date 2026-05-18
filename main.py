@@ -7,16 +7,16 @@ def addTask():
     print(f"Task '{task}' has been added to the list")
 
 
-def listTask():
-    if not task:
+def listTasks():
+    if not tasks:
          print("There are no task currently ")
     else:
         print("Here are all current tasks: ")
-     for task in tasks:
-         print(task)
+        for index in enumerate(tasks):
+            print(f"Task #{index}. {task}")
 
 def deleteTask():
-    listTask()
+    listTasks()
     try:
         taskToDelete = int(input("Enter the # you want to delete: "))
         if taskToDelete >= 0 and  taskToDelete < len(tasks):
@@ -39,7 +39,7 @@ if __name__ == "__main__":
         print("2. Delete a task")
         print("3. List tasks")
         print("4. Quit")
-
+ 
         choice = input("Enter your choice ")
 
         if (choice == "1"):
@@ -50,7 +50,7 @@ if __name__ == "__main__":
             deleteTask()
 
         elif(choice == "3"):
-            listTask()
+            listTasks()
 
         elif(choice == "4"):
             break
