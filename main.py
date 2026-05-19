@@ -1,5 +1,9 @@
 
+import json
+import os
+
 tasks = []
+FILENAME = "tasks.json"
 
 def addTask():
     task = input("Please enter a task: ")
@@ -12,8 +16,22 @@ def listTasks():
          print("There are no task currently ")
     else:
         print("Here are all current tasks: ")
-        for index in enumerate(tasks):
+        for index, task in enumerate(tasks):
             print(f"Task #{index}. {task}")
+
+def storeTasks():
+    with open(FILENAME, "w") as f:
+        json.dump(tasks, f)
+    print("Task added sucessfully")
+
+def loadTasks():
+    if os.path.exists(FILENAME):
+        with open(FILENAME, "r") as f:
+            loaded = json.load(f)
+            tasks.extend(loaded)
+        print(f"{len(loaded)} task(s) loaded")
+    else:
+        print("No saved task found")
 
 def deleteTask():
     listTasks()
@@ -31,6 +49,7 @@ def deleteTask():
 
 if __name__ == "__main__":
     print ("Welcome to my todo list app")
+    loadTasks()
 
     while True:
         print("\n")
