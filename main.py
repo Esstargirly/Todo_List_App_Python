@@ -3,7 +3,11 @@ import json
 import os
 
 tasks = []
-FILENAME = "tasks.json"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FILENAME = os.path.join(BASE_DIR, "tasks.json")
+
+# FILENAME = "tasks.json"
 
 def addTask():
     task = input("Please enter a task: ")
@@ -20,6 +24,7 @@ def listTasks():
             print(f"Task #{index}. {task}")
 
 def storeTasks():
+    print(os.path.abspath(FILENAME))
     with open(FILENAME, "w") as f:
         json.dump(tasks, f)
     print("Task added sucessfully")
