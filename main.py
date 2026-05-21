@@ -68,10 +68,12 @@ if __name__ == "__main__":
 
         if (choice == "1"):
             addTask()
+            storeTasks()
 
 
         elif (choice == "2"):
             deleteTask()
+            storeTasks()
 
         elif(choice == "3"):
             listTasks()
